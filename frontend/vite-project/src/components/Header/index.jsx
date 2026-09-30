@@ -1,9 +1,10 @@
-import { Bell, LogOut, Menu, Search } from 'lucide-react'
-import './style.css'
-
-function Header({ onMenuClick, title = 'Gerenciamento de Usuários' }) {
-  return (
-    <header className="header">
+import { Bell, LogOut, Menu, Search } from 'lucide-react';
+import './style.css';
+function Header({
+  onMenuClick,
+  title = 'Gerenciamento de Usuários'
+}) {
+  return <header className="header">
       <button className="header-menu-button" type="button" onClick={onMenuClick} aria-label="Abrir menu">
         <Menu size={22} strokeWidth={1.6} />
       </button>
@@ -22,8 +23,6 @@ function Header({ onMenuClick, title = 'Gerenciamento de Usuários' }) {
         <div className="header-avatar">RA</div>
         <strong className="header-user">Ricardo</strong>
       </div>
-    </header>
-  )
+    </header>;
 }
-
-export default Header
+export default Header;

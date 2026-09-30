@@ -1,0 +1,248 @@
+.login-page {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+  width: 100vw;
+}
+.login-institutional {
+  background: #303131;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 59px 56px 52px;
+}
+.login-brand span {
+  color: #f1c35e;
+  display: block;
+  height: 74px;
+}
+.login-brand strong {
+  color: #fff;
+  display: block;
+  font-size: 22px;
+  letter-spacing: -.8px;
+  margin-top: 7px;
+}
+.login-presentation {
+  margin-top: 68px;
+  max-width: 590px;
+}
+.login-presentation h1 {
+  font-size: 30px;
+  letter-spacing: -.7px;
+  line-height: 1.25;
+  margin: 0;
+}
+.login-presentation > p {
+  color: #cac8c6;
+  font-size: 14px;
+  line-height: 1.7;
+  margin: 18px 0 47px;
+  max-width: 555px;
+}
+.login-features {
+  display: grid;
+  gap: 17px 30px;
+  grid-template-columns: 1fr 1fr;
+}
+.login-features div {
+  align-items: center;
+  color: #cbc9c7;
+  display: flex;
+  font-size: 13px;
+  gap: 11px;
+}
+.login-features svg {
+  color: #edc264;
+}
+.login-institutional footer {
+  border-top: 1px solid #464747;
+  color: #999a98;
+  font-size: 11px;
+  margin-top: auto;
+  padding-top: 26px;
+}
+.login-access {
+  align-items: center;
+  background: #fdfcfb;
+  display: flex;
+  justify-content: center;
+  padding: 45px;
+}
+.login-form-wrap {
+  max-width: 400px;
+  width: 100%;
+}
+.login-form-wrap > header h2 {
+  color: #353231;
+  font-size: 25px;
+  letter-spacing: -.5px;
+  margin: 0;
+}
+.login-form-wrap > header p {
+  color: #77706c;
+  font-size: 13px;
+  margin: 12px 0 34px;
+}
+.login-card {
+  background: #fff;
+  border: 1px solid #e4dedb;
+  border-radius: 14px;
+  box-shadow: 0 2px 5px rgba(50, 43, 38, .04);
+  padding: 33px 32px 27px;
+}
+.login-card > label {
+  color: #393534;
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  gap: 9px;
+  margin-bottom: 23px;
+}
+.login-profile-select, .login-input {
+  align-items: center;
+  background: #faf9f8;
+  border: 1px solid #e1dcd8;
+  border-radius: 8px;
+  display: flex;
+  min-height: 44px;
+  padding: 0 13px;
+}
+.login-profile-select > span {
+  align-items: center;
+  background: #28677b;
+  border-radius: 8px;
+  color: #fff;
+  display: flex;
+  height: 32px;
+  justify-content: center;
+  margin-right: 10px;
+  width: 32px;
+}
+.login-profile-select > div {
+  min-width: 0;
+  width: 100%;
+}
+.login-profile-select select {
+  appearance: auto;
+  background: transparent;
+  border: 0;
+  color: #302d2c;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  outline: 0;
+  padding: 0;
+  width: 100%;
+}
+.login-profile-select small {
+  color: #8d8783;
+  display: block;
+  font-size: 10px;
+  margin-top: 3px;
+}
+.login-input {
+  gap: 10px;
+}
+.login-input svg {
+  color: #9b9591;
+  flex: 0 0 auto;
+}
+.login-input input {
+  background: transparent;
+  border: 0;
+  color: #393534;
+  font-family: inherit;
+  font-size: 13px;
+  outline: 0;
+  width: 100%;
+}
+.login-input input::placeholder {
+  color: #9d9793;
+}
+.login-submit {
+  background: #28677b;
+  border: 0;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  height: 48px;
+  margin-top: 4px;
+  width: 100%;
+}
+.forgot-password {
+  background: transparent;
+  border: 0;
+  color: #28677b;
+  cursor: pointer;
+  display: block;
+  font-family: inherit;
+  font-size: 12px;
+  margin: 19px auto 4px;
+}
+.login-demo {
+  color: #9b9591;
+  font-size: 11px;
+  margin: 22px 2px 0;
+  text-align: center;
+}
+@media (max-width: 950px) {
+  .login-institutional {
+    padding: 45px 40px;
+  }
+  .login-presentation {
+    margin-top: 48px;
+  }
+  .login-presentation h1 {
+    font-size: 27px;
+  }
+  .login-access {
+    padding: 32px;
+  }
+}
+@media (max-width: 767px) {
+  .login-page {
+    display: block;
+  }
+  .login-institutional {
+    min-height: 116px;
+    padding: 22px 26px;
+  }
+  .login-brand {
+    align-items: center;
+    display: flex;
+    gap: 11px;
+  }
+  .login-brand span {
+    height: auto;
+  }
+  .login-brand span svg {
+    height: 31px;
+    width: 31px;
+  }
+  .login-brand strong {
+    font-size: 19px;
+    margin: 0;
+  }
+  .login-presentation, .login-institutional footer {
+    display: none;
+  }
+  .login-access {
+    min-height: calc(100vh - 116px);
+    padding: 35px 16px;
+  }
+  .login-form-wrap > header h2 {
+    font-size: 23px;
+  }
+  .login-form-wrap > header p {
+    line-height: 1.5;
+    margin-bottom: 27px;
+  }
+  .login-card {
+    padding: 26px 20px 22px;
+  }
+}

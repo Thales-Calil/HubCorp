@@ -1,0 +1,68 @@
+.profile-data-card {
+  background: #fff;
+  border: 1px solid #e4dedb;
+  border-radius: 10px;
+  margin-top: 24px;
+  padding: 31px 28px 27px;
+}
+.profile-data-card h3 {
+  color: #302d2c;
+  font-size: 14px;
+  margin: 0 0 25px;
+}
+.profile-form-grid {
+  display: grid;
+  gap: 28px 16px;
+  grid-template-columns: 1fr 1fr;
+}
+.profile-form-grid label {
+  color: #393534;
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  gap: 9px;
+}
+.profile-form-grid input {
+  background: #fff;
+  border: 1px solid #e1dcd8;
+  border-radius: 7px;
+  color: #3c3735;
+  font-family: inherit;
+  font-size: 13px;
+  height: 41px;
+  outline-color: #28677b;
+  padding: 0 12px;
+  width: 100%;
+}
+.profile-save-area {
+  border-top: 1px solid #f1efed;
+  margin-top: 40px;
+  padding-top: 15px;
+}
+.profile-save-area button {
+  background: #28677b;
+  border: 0;
+  border-radius: 7px;
+  color: #fff;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  height: 42px;
+  padding: 0 24px;
+}
+@media (max-width: 600px) {
+  .profile-data-card {
+    padding: 22px 16px;
+  }
+  .profile-form-grid {
+    gap: 18px;
+    grid-template-columns: 1fr;
+  }
+  .profile-save-area {
+    margin-top: 25px;
+  }
+  .profile-save-area button {
+    width: 100%;
+  }
+}

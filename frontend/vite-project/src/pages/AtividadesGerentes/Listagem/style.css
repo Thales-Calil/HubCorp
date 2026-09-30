@@ -1,0 +1,253 @@
+.manager-activities-page {
+  background: #faf9f8;
+  display: flex;
+  min-height: 100vh;
+}
+.manager-activities-workspace {
+  min-width: 0;
+  width: calc(100% - 240px);
+}
+.manager-activities-content {
+  padding: 33px 32px;
+}
+.manager-activities-heading {
+  align-items: flex-start;
+  display: flex;
+  justify-content: space-between;
+}
+.manager-activities-heading h2 {
+  color: #302d2c;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -.35px;
+  margin: 0;
+}
+.manager-activities-heading p {
+  color: #77706c;
+  font-size: 14px;
+  margin: 8px 0 0;
+}
+.new-manager-activity-button {
+  align-items: center;
+  background: #28677b;
+  border: 0;
+  border-radius: 7px;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  gap: 8px;
+  height: 39px;
+  justify-content: center;
+  width: 162px;
+}
+.manager-sector-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 29px 0 20px;
+}
+.manager-sector-filters button {
+  background: #fff;
+  border: 1px solid #e2ddda;
+  border-radius: 7px;
+  color: #746e6a;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 13px;
+  height: 36px;
+  padding: 0 15px;
+  white-space: nowrap;
+}
+.manager-sector-filters button.manager-filter-selected {
+  background: #eff8fa;
+  border-color: #28677b;
+  color: #245b70;
+  font-weight: 600;
+}
+.manager-table-wrap {
+  background: #fff;
+  border: 1px solid #e4dedb;
+  border-radius: 10px;
+  overflow-x: auto;
+}
+.manager-table {
+  border-collapse: collapse;
+  min-width: 1100px;
+  width: 100%;
+}
+.manager-table th {
+  background: #fcfbfa;
+  border-bottom: 1px solid #e4dedb;
+  color: #77706c;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .5px;
+  padding: 14px 15px;
+  text-align: left;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.manager-table td {
+  border-bottom: 1px solid #f0edeb;
+  color: #6e6864;
+  font-size: 13px;
+  height: 55px;
+  padding: 10px 15px;
+  white-space: nowrap;
+}
+.manager-table tr:last-child td {
+  border-bottom: 0;
+}
+.manager-table th:first-child, .manager-table td:first-child {
+  padding-left: 15px;
+  width: 34%;
+}
+.manager-activity-title {
+  color: #302d2c !important;
+  font-weight: 600;
+}
+.manager-collaborator {
+  align-items: center;
+  display: flex;
+  gap: 9px;
+}
+.manager-collaborator span {
+  align-items: center;
+  border-radius: 50%;
+  color: #fff;
+  display: flex;
+  font-size: 10px;
+  height: 28px;
+  justify-content: center;
+  width: 28px;
+}
+.avatar-camila {
+  background: #28677b;
+}
+.avatar-larissa {
+  background: #9d8039;
+}
+.manager-progress {
+  align-items: center;
+  display: flex;
+  gap: 9px;
+}
+.manager-progress-track {
+  background: #e5e1dd;
+  border-radius: 5px;
+  display: block;
+  height: 5px;
+  overflow: hidden;
+  width: 117px;
+}
+.manager-progress-track i {
+  border-radius: 5px;
+  display: block;
+  height: 100%;
+}
+.progress-pending {
+  background: #e38b78;
+}
+.progress-done {
+  background: #669074;
+}
+.progress-new {
+  background: #28677b;
+}
+.manager-progress small {
+  color: #77706c;
+  font-size: 12px;
+}
+.manager-status {
+  border-radius: 12px;
+  display: inline-block;
+  font-size: 10px;
+  padding: 4px 10px;
+}
+.manager-status-new {
+  background: #edf4f6;
+  color: #28677b;
+}
+.manager-status-pending {
+  background: #fff4ef;
+  color: #ed886e;
+}
+.manager-status-done {
+  background: #eff9f1;
+  color: #5d8b6c;
+}
+.manager-actions {
+  display: flex;
+  gap: 7px;
+}
+.manager-actions button {
+  align-items: center;
+  background: #fff;
+  border: 1px solid #e4dfdc;
+  border-radius: 6px;
+  color: #8e8985;
+  cursor: pointer;
+  display: flex;
+  height: 26px;
+  justify-content: center;
+  width: 33px;
+}
+.manager-actions .manager-delete {
+  background: #fffafa;
+  border-color: #ffc8c8;
+  color: #f05454;
+}
+.no-manager-activities {
+  color: #77706c;
+  font-size: 14px;
+  padding: 24px;
+  text-align: center;
+}
+@media (max-width: 1024px) {
+  .manager-activities-workspace {
+    width: calc(100% - 210px);
+  }
+  .manager-activities-content {
+    padding: 28px 24px;
+  }
+}
+@media (max-width: 767px) {
+  .manager-activities-page {
+    display: block;
+  }
+  .manager-activities-workspace {
+    width: 100%;
+  }
+  .manager-activities-content {
+    padding: 24px 16px;
+  }
+  .manager-activities-heading {
+    flex-direction: column;
+    gap: 17px;
+  }
+  .manager-activities-heading h2 {
+    font-size: 21px;
+  }
+  .new-manager-activity-button {
+    width: 100%;
+  }
+  .manager-sector-filters {
+    margin: 24px 0 20px;
+  }
+  .manager-sector-filters button {
+    font-size: 12px;
+    padding: 0 12px;
+  }
+  .manager-sidebar-overlay {
+    background: rgba(0, 0, 0, .3);
+    border: 0;
+    inset: 0;
+    padding: 0;
+    position: fixed;
+    width: 100%;
+    z-index: 900;
+  }
+}

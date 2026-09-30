@@ -1,35 +1,43 @@
-import {
-  Building2,
-  CalendarDays,
-  ChevronRight,
-  ClipboardList,
-  HardHat,
-  LayoutGrid,
-  Megaphone,
-  MessageSquare,
-  UserRound,
-  Users,
-  UsersRound,
-  X,
-} from 'lucide-react'
-import './style.css'
-
-const menuItems = [
-  { icon: LayoutGrid, label: 'Dashboard' },
-  { icon: Megaphone, label: 'Avisos e Comunicados' },
-  { icon: Users, label: 'Central do RH' },
-  { icon: ClipboardList, label: 'Atividades do RH' },
-  { icon: ClipboardList, label: 'Atividades dos Gerentes' },
-  { icon: HardHat, label: 'Infraestrutura' },
-  { icon: MessageSquare, label: 'Chat' },
-  { icon: CalendarDays, label: 'Calendário' },
-  { icon: UsersRound, label: 'Usuários' },
-  { icon: UserRound, label: 'Meu Perfil' },
-]
-
-function Sidebar({ isOpen, onClose, activeItem = 'Usuários', onNavigate }) {
-  return (
-    <aside className={`sidebar ${isOpen ? 'sidebar-open' : ''}`}>
+import { Building2, CalendarDays, ChevronRight, ClipboardList, HardHat, LayoutGrid, Megaphone, MessageSquare, UserRound, Users, UsersRound, X } from 'lucide-react';
+import './style.css';
+const menuItems = [{
+  icon: LayoutGrid,
+  label: 'Dashboard'
+}, {
+  icon: Megaphone,
+  label: 'Avisos e Comunicados'
+}, {
+  icon: Users,
+  label: 'Central do RH'
+}, {
+  icon: ClipboardList,
+  label: 'Atividades do RH'
+}, {
+  icon: ClipboardList,
+  label: 'Atividades dos Gerentes'
+}, {
+  icon: HardHat,
+  label: 'Infraestrutura'
+}, {
+  icon: MessageSquare,
+  label: 'Chat'
+}, {
+  icon: CalendarDays,
+  label: 'Calendário'
+}, {
+  icon: UsersRound,
+  label: 'Usuários'
+}, {
+  icon: UserRound,
+  label: 'Meu Perfil'
+}];
+function Sidebar({
+  isOpen,
+  onClose,
+  activeItem = 'Usuários',
+  onNavigate
+}) {
+  return <aside className={`sidebar ${isOpen ? 'sidebar-open' : ''}`}>
       <div className="sidebar-brand">
         <div className="brand-mark"><Building2 size={25} strokeWidth={1.7} /></div>
         <div>
@@ -42,18 +50,14 @@ function Sidebar({ isOpen, onClose, activeItem = 'Usuários', onNavigate }) {
       </div>
 
       <nav className="sidebar-menu" aria-label="Menu principal">
-        {menuItems.map(({ icon: Icon, label }) => (
-          <button
-            className={`sidebar-item ${label === activeItem ? 'sidebar-item-active' : ''}`}
-            key={label}
-            onClick={() => onNavigate && onNavigate(label)}
-            type="button"
-          >
+        {menuItems.map(({
+        icon: Icon,
+        label
+      }) => <button className={`sidebar-item ${label === activeItem ? 'sidebar-item-active' : ''}`} key={label} onClick={() => onNavigate && onNavigate(label)} type="button">
             <span className="sidebar-icon"><Icon size={17} strokeWidth={1.6} /></span>
             <span>{label}</span>
             {label === activeItem && <ChevronRight className="sidebar-arrow" size={17} strokeWidth={1.6} />}
-          </button>
-        ))}
+          </button>)}
       </nav>
 
       <div className="sidebar-account">
@@ -63,8 +67,6 @@ function Sidebar({ isOpen, onClose, activeItem = 'Usuários', onNavigate }) {
           <span>Administrador</span>
         </div>
       </div>
-    </aside>
-  )
+    </aside>;
 }
-
-export default Sidebar
+export default Sidebar;
