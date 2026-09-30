@@ -1,0 +1,149 @@
+.sidebar {
+  background: #303030;
+  color: #c1c0c0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 240px;
+}
+
+.sidebar-brand {
+  align-items: center;
+  border-bottom: 1px solid #3e3e3e;
+  display: flex;
+  gap: 14px;
+  height: 80px;
+  padding: 0 28px;
+}
+
+.brand-mark {
+  color: #f3eee1;
+  display: flex;
+}
+
+.sidebar-brand strong,
+.sidebar-account strong {
+  color: #f5f5f5;
+  display: block;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.sidebar-brand span,
+.sidebar-account span {
+  color: #949494;
+  display: block;
+  font-size: 10px;
+  letter-spacing: .1px;
+  margin-top: 2px;
+}
+
+.sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 16px 10px;
+}
+
+.sidebar-item {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  border-radius: 7px;
+  color: #bcbaba;
+  cursor: pointer;
+  display: flex;
+  font-family: inherit;
+  font-size: 14px;
+  gap: 12px;
+  height: 39px;
+  padding: 0 13px;
+  text-align: left;
+  width: 100%;
+}
+
+.sidebar-icon {
+  color: #aaa8a7;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 16px;
+}
+
+.sidebar-item-active {
+  background: #414141;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.sidebar-item-active .sidebar-icon {
+  color: #1b9cca;
+}
+
+.sidebar-arrow {
+  color: #b5b5b5;
+  margin-left: auto;
+}
+
+.sidebar-account {
+  align-items: center;
+  border-top: 1px solid #3e3e3e;
+  display: flex;
+  gap: 10px;
+  margin-top: auto;
+  min-height: 77px;
+  padding: 0 20px;
+}
+
+.account-avatar {
+  align-items: center;
+  background: #77977e;
+  border-radius: 50%;
+  color: #ffffff;
+  display: flex;
+  font-size: 11px;
+  font-weight: 600;
+  height: 34px;
+  justify-content: center;
+  width: 34px;
+}
+
+.sidebar-account strong {
+  font-size: 12px;
+}
+
+.sidebar-close { display: none; }
+
+@media (max-width: 1024px) {
+  .sidebar { width: 210px; }
+  .sidebar-brand { padding: 0 19px; }
+}
+
+@media (max-width: 767px) {
+  .sidebar {
+    height: 100vh;
+    left: -260px;
+    min-height: 0;
+    position: fixed;
+    top: 0;
+    transition: left .2s ease;
+    width: 250px;
+    z-index: 1000;
+  }
+
+  .sidebar.sidebar-open { left: 0; }
+
+  .sidebar-brand { justify-content: flex-start; padding: 0 20px; position: relative; }
+
+  .sidebar-close {
+    align-items: center;
+    background: transparent;
+    border: 0;
+    color: #d2d0ce;
+    cursor: pointer;
+    display: flex;
+    padding: 5px;
+    position: absolute;
+    right: 14px;
+  }
+}

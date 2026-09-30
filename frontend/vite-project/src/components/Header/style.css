@@ -1,0 +1,127 @@
+.header {
+  align-items: center;
+  background: #ffffff;
+  border-bottom: 1px solid #e7e3df;
+  display: flex;
+  height: 59px;
+  justify-content: space-between;
+  padding: 0 28px;
+}
+
+.header h1 {
+  color: #292727;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.header-menu-button {
+  background: transparent;
+  border: 0;
+  color: #4a4643;
+  cursor: pointer;
+  display: none;
+  padding: 2px;
+}
+
+.header-actions {
+  align-items: center;
+  display: flex;
+  gap: 15px;
+}
+
+.system-search {
+  align-items: center;
+  background: #faf9f8;
+  border: 1px solid #e5e0dc;
+  border-radius: 9px;
+  color: #aaa5a1;
+  display: flex;
+  gap: 8px;
+  height: 31px;
+  padding: 0 13px;
+  width: 193px;
+}
+
+.system-search svg { flex: 0 0 auto; }
+
+.system-search input {
+  background: transparent;
+  border: 0;
+  color: #555;
+  font-family: inherit;
+  font-size: 12px;
+  outline: 0;
+  width: 100%;
+}
+
+.system-search input::placeholder { color: #aba6a3; }
+
+.header-icon-button {
+  background: transparent;
+  border: 0;
+  color: #807c78;
+  cursor: pointer;
+  line-height: 1;
+  padding: 2px;
+  position: relative;
+}
+
+.header-icon-button svg { display: block; }
+
+.notification-button span {
+  align-items: center;
+  background: #dc3232;
+  border-radius: 50%;
+  color: #fff;
+  display: flex;
+  font-family: Arial, sans-serif;
+  font-size: 9px;
+  height: 15px;
+  justify-content: center;
+  position: absolute;
+  right: -6px;
+  top: -7px;
+  width: 15px;
+}
+
+.header-avatar {
+  align-items: center;
+  background: #76977e;
+  border-radius: 50%;
+  color: #fff;
+  display: flex;
+  font-size: 11px;
+  font-weight: 600;
+  height: 34px;
+  justify-content: center;
+  margin-left: 2px;
+  width: 34px;
+}
+
+.header-user {
+  color: #383332;
+  font-size: 12px;
+  font-weight: 600;
+  margin-left: -8px;
+}
+
+@media (max-width: 850px) {
+  .header { padding: 0 18px; }
+  .system-search { width: 145px; }
+  .header-user { display: none; }
+}
+
+@media (max-width: 767px) {
+  .header { gap: 12px; padding: 0 16px; }
+  .header-menu-button { display: flex; }
+  .header h1 { font-size: 14px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .header-actions { gap: 12px; margin-left: auto; }
+  .system-search, .logout-button, .header-user { display: none; }
+  .header-avatar { margin-left: 0; }
+}
+
+@media (max-width: 420px) {
+  .header { gap: 8px; }
+  .header h1 { font-size: 13px; }
+  .header-actions { gap: 10px; }
+}
