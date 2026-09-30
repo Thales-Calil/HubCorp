@@ -1,8 +1,286 @@
-.aviso-crud-page { background: #faf9f8; display: flex; min-height: 100vh; }.aviso-crud-workspace { min-width: 0; width: calc(100% - 240px); }.aviso-crud-content { margin: 0 auto; max-width: 900px; padding: 33px 32px; }.aviso-crud-heading { margin-bottom: 27px; }.aviso-crud-heading h2 { color: #302d2c; font-size: 22px; font-weight: 700; letter-spacing: -.35px; margin: 0; }.aviso-crud-heading p { color: #77706c; font-size: 14px; margin: 8px 0 0; }
-.aviso-crud-layout { align-items: start; display: grid; gap: 24px; grid-template-columns: minmax(460px, 536px) minmax(280px, 340px); }.aviso-form-card, .aviso-preview-card, .publisher-card { background: #fff; border: 1px solid #e4dedb; border-radius: 10px; box-shadow: 0 1px 2px rgba(50, 43, 38, .03); }.aviso-form-card { padding: 29px 28px; }.aviso-form-grid { display: grid; gap: 14px; grid-template-columns: 1fr 1fr; }
-.aviso-form-card label { color: #393534; display: flex; flex-direction: column; font-size: 13px; gap: 9px; }.aviso-form-card em { color: #d74444; font-size: 14px; font-style: normal; }.aviso-form-card input, .aviso-form-card select, .aviso-form-card textarea { appearance: none; background: #fff; border: 1px solid #e1dcd8; border-radius: 7px; color: #3c3735; font-family: inherit; font-size: 13px; outline-color: #28677b; padding: 0 13px; width: 100%; }.aviso-form-card input, .aviso-form-card select { height: 42px; }.aviso-form-card select { background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%238f9ba1' stroke-width='1.5'%3E%3Cpath d='m2 4 4 4 4-4'/%3E%3C/svg%3E") no-repeat right 13px center; padding-right: 34px; }.aviso-form-card input::placeholder, .aviso-form-card textarea::placeholder { color: #9f9996; }.aviso-full-field { margin-top: 22px; }.aviso-form-card textarea { height: 200px; line-height: 1.5; padding: 13px; resize: vertical; }.aviso-date-field input { padding-right: 8px; }.aviso-form-actions { display: flex; gap: 10px; margin-top: 16px; }.aviso-form-actions button { border-radius: 7px; cursor: pointer; font-family: inherit; font-size: 13px; font-weight: 600; height: 43px; padding: 0 21px; }.aviso-cancel-button { background: #fff; border: 1px solid #e1dcd8; color: #5c5652; }.aviso-publish-button { background: #8fadb9; border: 1px solid #8fadb9; color: #fff; }.aviso-publish-button:hover { background: #28677b; border-color: #28677b; }
-.aviso-preview-column { display: flex; flex-direction: column; gap: 16px; }.aviso-preview-title { color: #77706c; font-size: 12px; letter-spacing: .8px; margin: 2px 0 -1px; text-transform: uppercase; }.aviso-preview-card { min-height: 119px; overflow: hidden; padding: 22px 18px 18px; position: relative; }.aviso-preview-card::before { content: ''; height: 4px; left: -1px; position: absolute; right: -1px; top: -1px; }.preview-geral::before, .preview-evento::before { background: #28677b; }.preview-urgente::before { background: #e52b2d; }.preview-rh::before { background: #ef8d75; }.aviso-preview-card > div { align-items: flex-start; display: flex; gap: 12px; justify-content: space-between; }.aviso-preview-card h3 { color: #302d2c; font-size: 14px; line-height: 1.35; margin: 0; }.aviso-preview-card span { background: #edf4f6; border-radius: 12px; color: #28677b; font-size: 10px; padding: 4px 10px; white-space: nowrap; }.preview-urgente span { background: #fff0f1; color: #e14444; }.preview-rh span { background: #fff7ef; color: #e98465; }.aviso-preview-card p { color: #77706c; font-size: 13px; line-height: 1.55; margin: 14px 0 0; }.publisher-card { min-height: 92px; padding: 17px 15px; }.publisher-card h3 { color: #77706c; font-size: 12px; font-weight: 500; margin: 0 0 10px; }.publisher-card strong { color: #302d2c; display: block; font-size: 13px; font-weight: 500; }.publisher-card p { color: #918a86; font-size: 11px; margin: 8px 0 0; }
-@media (max-width: 1024px) { .aviso-crud-workspace { width: calc(100% - 210px); }.aviso-crud-content { max-width: none; padding: 28px 24px; }.aviso-crud-layout { grid-template-columns: minmax(420px, 1fr) minmax(250px, 300px); } }
-@media (max-width: 850px) { .aviso-crud-layout { grid-template-columns: 1fr; }.aviso-preview-column { display: grid; grid-template-columns: 1fr 1fr; }.aviso-preview-title { display: none; } }
-@media (max-width: 767px) { .aviso-crud-page { display: block; }.aviso-crud-workspace { width: 100%; }.aviso-crud-content { padding: 24px 16px; }.aviso-crud-heading { margin-bottom: 22px; }.aviso-crud-heading h2 { font-size: 21px; }.aviso-form-card { padding: 22px 16px; }.aviso-form-grid, .aviso-preview-column { grid-template-columns: 1fr; }.aviso-form-grid { gap: 18px; }.aviso-form-card textarea { height: 180px; }.aviso-preview-card, .publisher-card { min-height: auto; }.aviso-crud-sidebar-overlay { background: rgba(0, 0, 0, .3); border: 0; inset: 0; padding: 0; position: fixed; width: 100%; z-index: 900; } }
-@media (max-width: 430px) { .aviso-form-actions { flex-direction: column; }.aviso-form-actions button { width: 100%; } }
+.aviso-crud-page {
+  background: #faf9f8;
+  display: flex;
+  min-height: 100vh;
+}
+.aviso-crud-workspace {
+  min-width: 0;
+  width: calc(100% - 240px);
+}
+.aviso-crud-content {
+  margin: 0 auto;
+  max-width: 900px;
+  padding: 33px 32px;
+}
+.aviso-crud-heading {
+  margin-bottom: 27px;
+}
+.aviso-crud-heading h2 {
+  color: #302d2c;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -.35px;
+  margin: 0;
+}
+.aviso-crud-heading p {
+  color: #77706c;
+  font-size: 14px;
+  margin: 8px 0 0;
+}
+.aviso-crud-layout {
+  align-items: start;
+  display: grid;
+  gap: 24px;
+  grid-template-columns: minmax(460px, 536px) minmax(280px, 340px);
+}
+.aviso-form-card, .aviso-preview-card, .publisher-card {
+  background: #fff;
+  border: 1px solid #e4dedb;
+  border-radius: 10px;
+  box-shadow: 0 1px 2px rgba(50, 43, 38, .03);
+}
+.aviso-form-card {
+  padding: 29px 28px;
+}
+.aviso-form-grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: 1fr 1fr;
+}
+.aviso-form-card label {
+  color: #393534;
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  gap: 9px;
+}
+.aviso-form-card em {
+  color: #d74444;
+  font-size: 14px;
+  font-style: normal;
+}
+.aviso-form-card input, .aviso-form-card select, .aviso-form-card textarea {
+  appearance: none;
+  background: #fff;
+  border: 1px solid #e1dcd8;
+  border-radius: 7px;
+  color: #3c3735;
+  font-family: inherit;
+  font-size: 13px;
+  outline-color: #28677b;
+  padding: 0 13px;
+  width: 100%;
+}
+.aviso-form-card input, .aviso-form-card select {
+  height: 42px;
+}
+.aviso-form-card select {
+  background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%238f9ba1' stroke-width='1.5'%3E%3Cpath d='m2 4 4 4 4-4'/%3E%3C/svg%3E") no-repeat right 13px center;
+  padding-right: 34px;
+}
+.aviso-form-card input::placeholder, .aviso-form-card textarea::placeholder {
+  color: #9f9996;
+}
+.aviso-full-field {
+  margin-top: 22px;
+}
+.aviso-form-card textarea {
+  height: 200px;
+  line-height: 1.5;
+  padding: 13px;
+  resize: vertical;
+}
+.aviso-date-field input {
+  padding-right: 8px;
+}
+.aviso-form-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}
+.aviso-form-actions button {
+  border-radius: 7px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  height: 43px;
+  padding: 0 21px;
+}
+.aviso-cancel-button {
+  background: #fff;
+  border: 1px solid #e1dcd8;
+  color: #5c5652;
+}
+.aviso-publish-button {
+  background: #8fadb9;
+  border: 1px solid #8fadb9;
+  color: #fff;
+}
+.aviso-publish-button:hover {
+  background: #28677b;
+  border-color: #28677b;
+}
+.aviso-preview-column {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.aviso-preview-title {
+  color: #77706c;
+  font-size: 12px;
+  letter-spacing: .8px;
+  margin: 2px 0 -1px;
+  text-transform: uppercase;
+}
+.aviso-preview-card {
+  min-height: 119px;
+  overflow: hidden;
+  padding: 22px 18px 18px;
+  position: relative;
+}
+.aviso-preview-card::before {
+  content: '';
+  height: 4px;
+  left: -1px;
+  position: absolute;
+  right: -1px;
+  top: -1px;
+}
+.preview-geral::before, .preview-evento::before {
+  background: #28677b;
+}
+.preview-urgente::before {
+  background: #e52b2d;
+}
+.preview-rh::before {
+  background: #ef8d75;
+}
+.aviso-preview-card > div {
+  align-items: flex-start;
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+}
+.aviso-preview-card h3 {
+  color: #302d2c;
+  font-size: 14px;
+  line-height: 1.35;
+  margin: 0;
+}
+.aviso-preview-card span {
+  background: #edf4f6;
+  border-radius: 12px;
+  color: #28677b;
+  font-size: 10px;
+  padding: 4px 10px;
+  white-space: nowrap;
+}
+.preview-urgente span {
+  background: #fff0f1;
+  color: #e14444;
+}
+.preview-rh span {
+  background: #fff7ef;
+  color: #e98465;
+}
+.aviso-preview-card p {
+  color: #77706c;
+  font-size: 13px;
+  line-height: 1.55;
+  margin: 14px 0 0;
+}
+.publisher-card {
+  min-height: 92px;
+  padding: 17px 15px;
+}
+.publisher-card h3 {
+  color: #77706c;
+  font-size: 12px;
+  font-weight: 500;
+  margin: 0 0 10px;
+}
+.publisher-card strong {
+  color: #302d2c;
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+}
+.publisher-card p {
+  color: #918a86;
+  font-size: 11px;
+  margin: 8px 0 0;
+}
+@media (max-width: 1024px) {
+  .aviso-crud-workspace {
+    width: calc(100% - 210px);
+  }
+  .aviso-crud-content {
+    max-width: none;
+    padding: 28px 24px;
+  }
+  .aviso-crud-layout {
+    grid-template-columns: minmax(420px, 1fr) minmax(250px, 300px);
+  }
+}
+@media (max-width: 850px) {
+  .aviso-crud-layout {
+    grid-template-columns: 1fr;
+  }
+  .aviso-preview-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .aviso-preview-title {
+    display: none;
+  }
+}
+@media (max-width: 767px) {
+  .aviso-crud-page {
+    display: block;
+  }
+  .aviso-crud-workspace {
+    width: 100%;
+  }
+  .aviso-crud-content {
+    padding: 24px 16px;
+  }
+  .aviso-crud-heading {
+    margin-bottom: 22px;
+  }
+  .aviso-crud-heading h2 {
+    font-size: 21px;
+  }
+  .aviso-form-card {
+    padding: 22px 16px;
+  }
+  .aviso-form-grid, .aviso-preview-column {
+    grid-template-columns: 1fr;
+  }
+  .aviso-form-grid {
+    gap: 18px;
+  }
+  .aviso-form-card textarea {
+    height: 180px;
+  }
+  .aviso-preview-card, .publisher-card {
+    min-height: auto;
+  }
+  .aviso-crud-sidebar-overlay {
+    background: rgba(0, 0, 0, .3);
+    border: 0;
+    inset: 0;
+    padding: 0;
+    position: fixed;
+    width: 100%;
+    z-index: 900;
+  }
+}
+@media (max-width: 430px) {
+  .aviso-form-actions {
+    flex-direction: column;
+  }
+  .aviso-form-actions button {
+    width: 100%;
+  }
+}

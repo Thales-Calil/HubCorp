@@ -7,13 +7,11 @@
   justify-content: space-between;
   padding: 0 28px;
 }
-
 .header h1 {
   color: #292727;
   font-size: 16px;
   font-weight: 600;
 }
-
 .header-menu-button {
   background: transparent;
   border: 0;
@@ -22,13 +20,11 @@
   display: none;
   padding: 2px;
 }
-
 .header-actions {
   align-items: center;
   display: flex;
   gap: 15px;
 }
-
 .system-search {
   align-items: center;
   background: #faf9f8;
@@ -41,9 +37,9 @@
   padding: 0 13px;
   width: 193px;
 }
-
-.system-search svg { flex: 0 0 auto; }
-
+.system-search svg {
+  flex: 0 0 auto;
+}
 .system-search input {
   background: transparent;
   border: 0;
@@ -53,9 +49,9 @@
   outline: 0;
   width: 100%;
 }
-
-.system-search input::placeholder { color: #aba6a3; }
-
+.system-search input::placeholder {
+  color: #aba6a3;
+}
 .header-icon-button {
   background: transparent;
   border: 0;
@@ -65,9 +61,9 @@
   padding: 2px;
   position: relative;
 }
-
-.header-icon-button svg { display: block; }
-
+.header-icon-button svg {
+  display: block;
+}
 .notification-button span {
   align-items: center;
   background: #dc3232;
@@ -83,7 +79,6 @@
   top: -7px;
   width: 15px;
 }
-
 .header-avatar {
   align-items: center;
   background: #76977e;
@@ -97,31 +92,56 @@
   margin-left: 2px;
   width: 34px;
 }
-
 .header-user {
   color: #383332;
   font-size: 12px;
   font-weight: 600;
   margin-left: -8px;
 }
-
 @media (max-width: 850px) {
-  .header { padding: 0 18px; }
-  .system-search { width: 145px; }
-  .header-user { display: none; }
+  .header {
+    padding: 0 18px;
+  }
+  .system-search {
+    width: 145px;
+  }
+  .header-user {
+    display: none;
+  }
 }
-
 @media (max-width: 767px) {
-  .header { gap: 12px; padding: 0 16px; }
-  .header-menu-button { display: flex; }
-  .header h1 { font-size: 14px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .header-actions { gap: 12px; margin-left: auto; }
-  .system-search, .logout-button, .header-user { display: none; }
-  .header-avatar { margin-left: 0; }
+  .header {
+    gap: 12px;
+    padding: 0 16px;
+  }
+  .header-menu-button {
+    display: flex;
+  }
+  .header h1 {
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .header-actions {
+    gap: 12px;
+    margin-left: auto;
+  }
+  .system-search, .logout-button, .header-user {
+    display: none;
+  }
+  .header-avatar {
+    margin-left: 0;
+  }
 }
-
 @media (max-width: 420px) {
-  .header { gap: 8px; }
-  .header h1 { font-size: 13px; }
-  .header-actions { gap: 10px; }
+  .header {
+    gap: 8px;
+  }
+  .header h1 {
+    font-size: 13px;
+  }
+  .header-actions {
+    gap: 10px;
+  }
 }

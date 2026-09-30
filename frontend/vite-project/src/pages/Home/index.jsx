@@ -1,13 +1,8 @@
-import { useState } from 'react'
-import './style.css'
-
+import { useState } from 'react';
+import './style.css';
 function Home() {
-
-  return (
-    <>
+  return <>
       <h1>HubCorp</h1>
-    </>
-  )
+    </>;
 }
-
-export default Home
+export default Home;
