@@ -36,7 +36,7 @@ class UserController {
         try {
             const {
                 nome,
-                emailCorporativo,
+                email,
                 senha,
                 telefone,
                 cargo,
@@ -47,7 +47,7 @@ class UserController {
 
             const usuario = await User.create({
                 nome,
-                emailCorporativo,
+                email,
                 senha,
                 telefone,
                 cargo,
@@ -59,7 +59,7 @@ class UserController {
             res.status(201).json(usuario);
         } catch (error) {
             res.status(500).json({
-                error: "Erro ao criar usuário."
+                error: "Erro ao criar usuário.",
             });
         }
     }
