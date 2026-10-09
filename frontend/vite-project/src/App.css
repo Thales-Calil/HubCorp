@@ -137,6 +137,46 @@
     height: 48px;
   }
 }
+.access-denied-page {
+  align-items: center;
+  background: #fdfcfb;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 24px;
+}
+.access-denied-card {
+  background: #fff;
+  border: 1px solid #e4dedb;
+  border-radius: 14px;
+  box-shadow: 0 2px 5px rgba(50, 43, 38, .04);
+  max-width: 390px;
+  padding: 32px;
+  text-align: center;
+}
+.access-denied-card h1 {
+  color: #353231;
+  font-size: 24px;
+  margin: 0;
+}
+.access-denied-card p {
+  color: #77706c;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 14px 0 24px;
+}
+.access-denied-card button {
+  background: #28677b;
+  border: 0;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  min-height: 42px;
+  padding: 0 22px;
+}
 .ticks {
   position: relative;
   width: 100%;

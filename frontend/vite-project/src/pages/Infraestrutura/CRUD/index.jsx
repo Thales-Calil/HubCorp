@@ -4,13 +4,16 @@ import './style.css';
 function InfraestruturaModal({
   quantidade,
   onFechar,
-  onCriar
+  onCriar,
+  usuario
 }) {
   const [titulo, setTitulo] = useState('');
   const [tipo, setTipo] = useState('Outros');
   const [prioridade, setPrioridade] = useState('Média');
   const [localizacao, setLocalizacao] = useState('');
   const [descricao, setDescricao] = useState('');
+  const nomeSolicitante = usuario?.nome || 'Usuário';
+  const iniciaisSolicitante = nomeSolicitante.split(' ').filter(Boolean).slice(0, 2).map(parte => parte[0]).join('').toUpperCase() || 'U';
   function enviarSolicitacao() {
     if (!titulo || !localizacao) {
       alert('Preencha o título e a localização da solicitação.');
@@ -23,8 +26,8 @@ function InfraestruturaModal({
       prioridade,
       localizacao,
       descricao,
-      solicitante: 'Ricardo',
-      iniciais: 'RA',
+      solicitante: nomeSolicitante,
+      iniciais: iniciaisSolicitante,
       status: 'Aberta',
       data: '15/08/2026'
     });

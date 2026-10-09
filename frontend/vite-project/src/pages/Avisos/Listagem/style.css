@@ -98,6 +98,10 @@
   color: #245b70;
   font-weight: 600;
 }
+.notice-type-filters button:disabled, .notice-card-actions button:disabled {
+  cursor: not-allowed;
+  opacity: .6;
+}
 .notices-grid {
   display: grid;
   gap: 20px;
@@ -167,6 +171,13 @@
   line-height: 1.55;
   margin: 14px 0 18px;
 }
+.notice-sectors {
+  color: #918a86;
+  display: block;
+  font-size: 11px;
+  line-height: 1.4;
+  margin: -8px 0 10px;
+}
 .notice-card-actions {
   display: flex;
   gap: 7px;
@@ -195,6 +206,25 @@
   font-size: 14px;
   margin: 28px 0;
   text-align: center;
+}
+.notices-success-message, .notices-error-message, .notices-security-message {
+  border-radius: 7px;
+  font-size: 13px;
+  line-height: 1.45;
+  margin: 0 0 18px;
+  padding: 11px 13px;
+}
+.notices-success-message {
+  background: #eff8f3;
+  color: #2f7352;
+}
+.notices-error-message {
+  background: #fff1f1;
+  color: #b63434;
+}
+.notices-security-message {
+  background: #fff7ef;
+  color: #8a5923;
 }
 @media (max-width: 1024px) {
   .avisos-workspace {
