@@ -10,6 +10,7 @@ const formRoutes = require("./routes/formRoutes");
 const questionRoutes = require("./routes/questionRoutes");
 const answeredFormRoutes = require("./routes/answeredFormRoutes");
 const answerRoutes = require("./routes/answerRoutes");
+const authRoutes = require("./routes/authRoutes");
 
 app.use(cors());
 app.use(express.json());
@@ -20,6 +21,7 @@ app.use("/api/formularios", formRoutes);
 app.use("/api/perguntas", questionRoutes);
 app.use("/api/formularios-respondidos", answeredFormRoutes);
 app.use("/api/respostas", answerRoutes);
+app.use("/api/auth", authRoutes);
 
 app.get("/", (req, res) => {
     res.json({

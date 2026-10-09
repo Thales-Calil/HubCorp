@@ -1,4 +1,6 @@
 const Answer = require("../models/Answer");
+const Question = require("../models/Question");
+const AnswerValidationContext = require("../strategies/AnswerValidationContext");
 
 class AnswerController {
 
@@ -39,29 +41,50 @@ class AnswerController {
     }
 
     async criar(req, res) {
-        try {
-            const {
-                formularioRespondidoId,
-                perguntaId,
-                valor
-            } = req.body;
+    try {
+        const {
+            formularioRespondidoId,
+            perguntaId,
+            valor
+        } = req.body;
 
-            const resposta = await Answer.create({
-                formularioRespondidoId,
-                perguntaId,
-                valor
-            });
+        const pergunta = await Question.findByPk(perguntaId);
 
-            res.status(201).json(resposta);
-        } catch (error) {
-            console.error(error);
-
-            res.status(500).json({
-                error: "Erro ao criar resposta.",
-                details: error.message
+        if (!pergunta) {
+            return res.status(404).json({
+                error: "Pergunta não encontrada."
             });
         }
+
+        const strategy = AnswerValidationContext.obterStrategy(
+            pergunta.tipo
+        );
+
+        const valido = strategy.validar(valor, pergunta.opcoes);
+
+        if (!valido) {
+            return res.status(400).json({
+                error: "Resposta inválida para o tipo da pergunta."
+            });
+        }
+
+        const resposta = await Answer.create({
+            formularioRespondidoId,
+            perguntaId,
+            valor
+        });
+
+        res.status(201).json(resposta);
+
+    } catch (error) {
+        console.error(error);
+
+        res.status(500).json({
+            error: "Erro ao criar resposta.",
+            details: error.message
+        });
     }
+}
 
     async atualizar(req, res) {
         try {

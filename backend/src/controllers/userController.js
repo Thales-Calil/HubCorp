@@ -1,4 +1,6 @@
 const User = require("../models/User");
+const UserFactory = require("../factories/UserFactory");
+const bcrypt = require("bcryptjs");
 
 class UserController {
 
@@ -34,33 +36,23 @@ class UserController {
 
     async criar(req, res) {
         try {
-            const {
-                nome,
-                email,
-                senha,
-                telefone,
-                cargo,
-                setorId,
-                userType,
-                ativo
-            } = req.body;
+            const dadosUsuario = UserFactory.criar(req.body);
 
-            const usuario = await User.create({
-                nome,
-                email,
-                senha,
-                telefone,
-                cargo,
-                setorId,
-                userType,
-                ativo
-            });
+            dadosUsuario.senha = await bcrypt.hash(dadosUsuario.senha, 10);
 
-            res.status(201).json(usuario);
+            const usuario = await User.create(dadosUsuario);
+
+            const { senha, ...usuarioSemSenha } = usuario.toJSON();
+
+            res.status(201).json(usuarioSemSenha);
+
         } catch (error) {
-            res.status(500).json({
+            console.error(error);
+
+            res.status(400).json({
                 error: "Erro ao criar usuário.",
-            });
+                details: error.message
+                });
         }
     }
 
@@ -76,7 +68,7 @@ class UserController {
 
             const {
                 nome,
-                emailCorporativo,
+                email,
                 senha,
                 telefone,
                 cargo,
@@ -85,24 +77,42 @@ class UserController {
                 ativo
             } = req.body;
 
-            await usuario.update({
+            const dadosAtualizados = {
                 nome,
-                emailCorporativo,
-                senha,
+                email,
                 telefone,
                 cargo,
                 setorId,
                 userType,
                 ativo
+            };
+
+            // Só altera a senha se uma nova senha for enviada.
+            if (senha) {
+                dadosAtualizados.senha = await bcrypt.hash(senha, 10);
+            }
+
+            // Evita sobrescrever campos que não foram enviados.
+            Object.keys(dadosAtualizados).forEach((campo) => {
+                if (dadosAtualizados[campo] === undefined) {
+                    delete dadosAtualizados[campo];
+                }
             });
 
-            res.json(usuario);
+            await usuario.update(dadosAtualizados);
+
+            const { senha: senhaOculta, ...usuarioSemSenha } =
+                usuario.toJSON();
+
+            res.json(usuarioSemSenha);
         } catch (error) {
+            console.error(error);
+
             res.status(500).json({
                 error: "Erro ao atualizar usuário."
-            });
+                });
+            }
         }
-    }
 
     async excluir(req, res) {
         try {

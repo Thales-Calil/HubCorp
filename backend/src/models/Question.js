@@ -27,6 +27,11 @@ const Question = sequelize.define("Question", {
     ordem: {
         type: DataTypes.INTEGER,
         allowNull: false
+    },
+
+    opcoes: {
+        type: DataTypes.JSON,
+        allowNull: true
     }
 }, {
     tableName: "pergunta",

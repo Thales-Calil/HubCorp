@@ -45,13 +45,15 @@ class QuestionController {
                 formularioId,
                 titulo,
                 tipo,
-                ordem
+                ordem,
+                opcoes
             } = req.body;
 
             const dadosPergunta = QuestionFactory.criar(tipo, {
                 formularioId,
                 titulo,
-                ordem
+                ordem,
+                opcoes
             });
 
             const pergunta = await Question.create(dadosPergunta);

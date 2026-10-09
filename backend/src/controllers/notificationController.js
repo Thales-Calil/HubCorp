@@ -1,5 +1,6 @@
 const Notification = require("../models/Notification");
 const Sector = require("../models/Sector");
+const NotificationFacade = require("../facades/NotificationFacade");
 
 class NotificationController {
 
@@ -46,33 +47,28 @@ class NotificationController {
     }
 
     async criar(req, res) {
-    try {
-        const {
-            titulo,
-            descricao,
-            autorId,
-            setores
-        } = req.body;
+        try {
+            const {
+                titulo,
+                descricao,
+                autorId,
+                setores
+            } = req.body;
 
-        const notificacao = await Notification.create({
-            titulo,
-            descricao,
-            autorId
-        });
+            const notificacao = await NotificationFacade.criarNotificacao(
+                { titulo, descricao, autorId },
+                setores || []
+            );
 
-        if (setores && setores.length > 0) {
-            await notificacao.setSectors(setores);
-        }
+            res.status(201).json(notificacao);
 
-        res.status(201).json(notificacao);
+        } catch (error) {
+            console.error(error);
 
-    } catch (error) {
-        console.error(error);
-
-        res.status(500).json({
-            error: "Erro ao criar comunicado.",
-            details: error.message
-        });
+            res.status(500).json({
+                error: "Erro ao criar comunicado.",
+                details: error.message
+            });
         }
     }
 
