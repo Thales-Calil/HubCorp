@@ -5,7 +5,8 @@ class CollaboratorPermissionStrategy extends PermissionStrategy {
     podeExecutar(acao) {
         const permissoes = [
             "VISUALIZAR_NOTIFICACAO",
-            "RESPONDER_FORMULARIO"
+            "RESPONDER_FORMULARIO",
+            "VISUALIZAR_FORMULARIO"
         ];
 
         return permissoes.includes(acao);

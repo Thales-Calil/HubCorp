@@ -9,7 +9,10 @@ class RHPermissionStrategy extends PermissionStrategy {
             "GERENCIAR_FORMULARIOS",
             "CRIAR_NOTIFICACAO",
             "VISUALIZAR_NOTIFICACAO",
-            "RESPONDER_FORMULARIO"
+            "RESPONDER_FORMULARIO",
+            "EDITAR_NOTIFICACAO",
+            "EXCLUIR_NOTIFICACAO",
+            "VISUALIZAR_FORMULARIO"
         ];
 
         return permissoes.includes(acao);

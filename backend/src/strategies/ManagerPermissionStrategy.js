@@ -6,7 +6,8 @@ class ManagerPermissionStrategy extends PermissionStrategy {
         const permissoes = [
             "CRIAR_NOTIFICACAO",
             "VISUALIZAR_NOTIFICACAO",
-            "RESPONDER_FORMULARIO"
+            "RESPONDER_FORMULARIO",
+            "VISUALIZAR_FORMULARIO"
         ];
 
         return permissoes.includes(acao);
