@@ -104,16 +104,18 @@ const abas = [{
   quantidade: 3
 }];
 function CentralRH({
-  onNavigate
+  onNavigate,
+  onLogout,
+  usuario
 }) {
   const [menuAberto, setMenuAberto] = useState(false);
   const [abaSelecionada, setAbaSelecionada] = useState('relatos');
   const itensDaAba = abaSelecionada === 'relatos' ? relatos : abaSelecionada === 'sugestoes' ? sugestoes : solicitacoes;
   return <div className="central-rh-page">
-      <Sidebar activeItem="Central do RH" isOpen={menuAberto} onClose={() => setMenuAberto(false)} onNavigate={onNavigate} />
+      <Sidebar activeItem="Central do RH" isOpen={menuAberto} onClose={() => setMenuAberto(false)} onNavigate={onNavigate} usuario={usuario} />
       {menuAberto && <button className="central-rh-sidebar-overlay" type="button" onClick={() => setMenuAberto(false)} aria-label="Fechar menu" />}
       <div className="central-rh-workspace">
-        <Header title="Central do RH" onMenuClick={() => setMenuAberto(!menuAberto)} />
+        <Header title="Central do RH" onMenuClick={() => setMenuAberto(!menuAberto)} onLogout={onLogout} usuario={usuario} />
         <main className="central-rh-content">
           <section className="central-rh-intro">
             <div><h2>Central do RH</h2><p>Monitoramento de relatos, sugestões e solicitações recebidas</p></div>

@@ -266,11 +266,25 @@
 .action-button svg {
   display: block;
 }
+.action-button:disabled {
+  cursor: wait;
+  opacity: .6;
+}
 .empty-message {
   color: #77706c;
   font-size: 13px;
   padding: 24px;
   text-align: center;
+}
+.users-success-message, .users-error-message {
+  font-size: 13px;
+  margin: 0 0 16px;
+}
+.users-success-message {
+  color: #4d8964;
+}
+.users-error-message {
+  color: #b33d3d;
 }
 @media (max-width: 1250px) {
   .filters {

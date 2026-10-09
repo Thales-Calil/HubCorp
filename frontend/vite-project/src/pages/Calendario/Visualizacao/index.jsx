@@ -43,7 +43,9 @@ function diaDoEvento(data) {
   return Number(data.split('-')[2]);
 }
 function CalendarioVisualizacao({
-  onNavigate
+  onNavigate,
+  onLogout,
+  usuario
 }) {
   const [eventos, setEventos] = useState(eventosIniciais);
   const [modalAberto, setModalAberto] = useState(false);
@@ -54,9 +56,9 @@ function CalendarioVisualizacao({
     setModalAberto(false);
   }
   return <div className="calendar-page">
-      <Sidebar activeItem="Calendário" isOpen={menuAberto} onClose={() => setMenuAberto(false)} onNavigate={onNavigate} />
+      <Sidebar activeItem="Calendário" isOpen={menuAberto} onClose={() => setMenuAberto(false)} onNavigate={onNavigate} usuario={usuario} />
       {menuAberto && <button className="calendar-sidebar-overlay" type="button" onClick={() => setMenuAberto(false)} aria-label="Fechar menu" />}
-      <div className="calendar-workspace"><Header title="Calendário Corporativo" onMenuClick={() => setMenuAberto(!menuAberto)} />
+      <div className="calendar-workspace"><Header title="Calendário Corporativo" onMenuClick={() => setMenuAberto(!menuAberto)} onLogout={onLogout} usuario={usuario} />
         <main className="calendar-content"><section className="calendar-layout"><div className="calendar-main"><div className="calendar-toolbar"><div className="calendar-month"><button type="button" aria-label="Mês anterior"><ChevronLeft size={18} strokeWidth={1.7} /></button><h2>Agosto 2026</h2><button type="button" aria-label="Próximo mês"><ChevronRight size={18} strokeWidth={1.7} /></button></div><button className="new-event-button" type="button" onClick={() => setModalAberto(true)}><Plus size={17} strokeWidth={1.8} /> Novo Evento</button></div><div className="calendar-scroll"><section className="calendar-grid"><div className="calendar-weekdays">{['DOM', 'SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SÁB'].map(dia => <span key={dia}>{dia}</span>)}</div><div className="calendar-days">{diasDoMes.map((dia, indice) => {
                     const eventosDoDia = dia ? eventos.filter(evento => evento.data === `2026-08-${String(dia).padStart(2, '0')}`) : [];
                     return <div className={`calendar-day ${dia ? '' : 'calendar-empty'}`} key={`${dia}-${indice}`}>{dia && <span className={dia === 14 ? 'calendar-today' : ''}>{dia}</span>}{eventosDoDia.map(evento => <p key={`${evento.titulo}-${evento.data}`} className={classeEvento(evento.categoria)}>{evento.titulo}</p>)}</div>;

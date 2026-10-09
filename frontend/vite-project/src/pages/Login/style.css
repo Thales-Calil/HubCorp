@@ -136,6 +136,11 @@
   padding: 0;
   width: 100%;
 }
+.login-profile-select select:disabled {
+  color: #302d2c;
+  cursor: default;
+  opacity: 1;
+}
 .login-profile-select small {
   color: #8d8783;
   display: block;
@@ -173,6 +178,16 @@
   height: 48px;
   margin-top: 4px;
   width: 100%;
+}
+.login-submit:disabled {
+  cursor: wait;
+  opacity: .75;
+}
+.login-error {
+  color: #a33c32;
+  font-size: 12px;
+  line-height: 1.4;
+  margin: -8px 0 12px;
 }
 .forgot-password {
   background: transparent;

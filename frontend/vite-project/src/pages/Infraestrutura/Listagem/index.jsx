@@ -55,7 +55,9 @@ function classeAvatar(iniciais) {
   return iniciais === 'RA' ? 'avatar-ra' : iniciais === 'PM' ? 'avatar-pm' : 'avatar-blue';
 }
 function InfraestruturaListagem({
-  onNavigate
+  onNavigate,
+  onLogout,
+  usuario
 }) {
   const [busca, setBusca] = useState('');
   const [statusSelecionado, setStatusSelecionado] = useState('Todos');
@@ -71,16 +73,16 @@ function InfraestruturaListagem({
     setModalAberto(false);
   }
   return <div className="infrastructure-page">
-      <Sidebar activeItem="Infraestrutura" isOpen={menuAberto} onClose={() => setMenuAberto(false)} onNavigate={onNavigate} />
+      <Sidebar activeItem="Infraestrutura" isOpen={menuAberto} onClose={() => setMenuAberto(false)} onNavigate={onNavigate} usuario={usuario} />
       {menuAberto && <button className="infrastructure-sidebar-overlay" type="button" onClick={() => setMenuAberto(false)} aria-label="Fechar menu" />}
-      <div className="infrastructure-workspace"><Header title="Solicitações de Infraestrutura" onMenuClick={() => setMenuAberto(!menuAberto)} />
+      <div className="infrastructure-workspace"><Header title="Solicitações de Infraestrutura" onMenuClick={() => setMenuAberto(!menuAberto)} onLogout={onLogout} usuario={usuario} />
         <main className="infrastructure-content">
           <section className="infrastructure-heading"><div><h2>Solicitações de Infraestrutura</h2><p>Registro e acompanhamento de demandas de manutenção e instalações</p></div><button type="button" className="new-request-button" onClick={() => setModalAberto(true)}><Plus size={17} strokeWidth={1.8} /> Nova Solicitação</button></section>
           <section className="infrastructure-filters"><label className="infrastructure-search"><input value={busca} onChange={event => setBusca(event.target.value)} placeholder="Buscar por título ou nº..." /></label><div className="infrastructure-status-filters">{filtros.map(filtro => <button type="button" className={statusSelecionado === filtro ? 'infra-filter-selected' : ''} key={filtro} onClick={() => setStatusSelecionado(filtro)}>{filtro}</button>)}</div></section>
           <section className="infrastructure-table-wrap"><table className="infrastructure-table"><thead><tr><th>Nº</th><th>Título</th><th>Solicitante</th><th>Tipo</th><th>Prioridade</th><th>Status</th><th>Data</th><th>Ações</th></tr></thead><tbody>{solicitacoesFiltradas.map(solicitacao => <tr key={solicitacao.numero}><td className="request-number">{solicitacao.numero}</td><td className="request-title">{solicitacao.titulo}</td><td><div className="requester"><span className={classeAvatar(solicitacao.iniciais)}>{solicitacao.iniciais}</span>{solicitacao.solicitante}</div></td><td>{solicitacao.tipo}</td><td><span className={`infra-priority ${classePrioridade(solicitacao.prioridade)}`}>{solicitacao.prioridade}</span></td><td><span className={`infra-status ${classeStatus(solicitacao.status)}`}>{solicitacao.status}</span></td><td>{solicitacao.data}</td><td><button type="button" className="view-request"><Eye size={14} strokeWidth={1.6} /> Ver</button></td></tr>)}</tbody></table>{solicitacoesFiltradas.length === 0 && <p className="no-infrastructure-requests">Nenhuma solicitação encontrada.</p>}</section>
         </main>
       </div>
-      {modalAberto && <InfraestruturaModal quantidade={solicitacoes.length} onFechar={() => setModalAberto(false)} onCriar={criarSolicitacao} />}
+      {modalAberto && <InfraestruturaModal quantidade={solicitacoes.length} onFechar={() => setModalAberto(false)} onCriar={criarSolicitacao} usuario={usuario} />}
     </div>;
 }
 export default InfraestruturaListagem;

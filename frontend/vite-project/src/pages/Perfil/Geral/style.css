@@ -34,6 +34,17 @@
   padding: 0 12px;
   width: 100%;
 }
+.profile-form-grid input:disabled {
+  background: #f6f4f2;
+  color: #77706c;
+  cursor: not-allowed;
+}
+.profile-readonly-note, .profile-save-area p {
+  color: #77706c;
+  font-size: 12px;
+  line-height: 1.45;
+  margin: -12px 0 22px;
+}
 .profile-save-area {
   border-top: 1px solid #f1efed;
   margin-top: 40px;
@@ -50,6 +61,10 @@
   font-weight: 600;
   height: 42px;
   padding: 0 24px;
+}
+.profile-save-area button:disabled {
+  cursor: not-allowed;
+  opacity: .62;
 }
 @media (max-width: 600px) {
   .profile-data-card {

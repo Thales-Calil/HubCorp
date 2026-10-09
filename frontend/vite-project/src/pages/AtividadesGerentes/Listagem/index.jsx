@@ -47,7 +47,9 @@ function classeProgresso(status) {
   return status === 'Concluído' ? 'progress-done' : status === 'Novo' ? 'progress-new' : 'progress-pending';
 }
 function AtividadesGerentesListagem({
-  onNavigate
+  onNavigate,
+  onLogout,
+  usuario
 }) {
   const [setorSelecionado, setSetorSelecionado] = useState('Todos os setores');
   const [modalAberto, setModalAberto] = useState(false);
@@ -59,10 +61,10 @@ function AtividadesGerentesListagem({
     setModalAberto(false);
   }
   return <div className="manager-activities-page">
-      <Sidebar activeItem="Atividades dos Gerentes" isOpen={menuAberto} onClose={() => setMenuAberto(false)} onNavigate={onNavigate} />
+      <Sidebar activeItem="Atividades dos Gerentes" isOpen={menuAberto} onClose={() => setMenuAberto(false)} onNavigate={onNavigate} usuario={usuario} />
       {menuAberto && <button className="manager-sidebar-overlay" type="button" onClick={() => setMenuAberto(false)} aria-label="Fechar menu" />}
       <div className="manager-activities-workspace">
-        <Header title="Atividades dos Gerentes" onMenuClick={() => setMenuAberto(!menuAberto)} />
+        <Header title="Atividades dos Gerentes" onMenuClick={() => setMenuAberto(!menuAberto)} onLogout={onLogout} usuario={usuario} />
         <main className="manager-activities-content">
           <section className="manager-activities-heading">
             <div><h2>Controle de Atividades � Gerentes</h2><p>Gerenciamento das atividades por equipe e setor</p></div>

@@ -98,14 +98,16 @@ const atalhos = [{
   classe: 'shortcut-peach'
 }];
 function Dashboard({
-  onNavigate
+  onNavigate,
+  onLogout,
+  usuario
 }) {
   const [menuAberto, setMenuAberto] = useState(false);
   return <div className="dashboard-page">
-      <Sidebar activeItem="Dashboard" isOpen={menuAberto} onClose={() => setMenuAberto(false)} onNavigate={onNavigate} />
+      <Sidebar activeItem="Dashboard" isOpen={menuAberto} onClose={() => setMenuAberto(false)} onNavigate={onNavigate} usuario={usuario} />
       {menuAberto && <button className="dashboard-sidebar-overlay" type="button" onClick={() => setMenuAberto(false)} aria-label="Fechar menu" />}
       <div className="dashboard-workspace">
-        <Header title="Dashboard" onMenuClick={() => setMenuAberto(!menuAberto)} />
+        <Header title="Dashboard" onMenuClick={() => setMenuAberto(!menuAberto)} onLogout={onLogout} usuario={usuario} />
         <main className="dashboard-content">
           <section className="indicators-grid">
             {indicadores.map(({

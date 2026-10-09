@@ -44,7 +44,9 @@ function classeStatus(status) {
   return 'activity-status-progress';
 }
 function AtividadesRHListagem({
-  onNavigate
+  onNavigate,
+  onLogout,
+  usuario
 }) {
   const [busca, setBusca] = useState('');
   const [statusSelecionado, setStatusSelecionado] = useState('Todos');
@@ -61,10 +63,10 @@ function AtividadesRHListagem({
     setModalAberto(false);
   }
   return <div className="activities-page">
-      <Sidebar activeItem="Atividades do RH" isOpen={menuAberto} onClose={() => setMenuAberto(false)} onNavigate={onNavigate} />
+      <Sidebar activeItem="Atividades do RH" isOpen={menuAberto} onClose={() => setMenuAberto(false)} onNavigate={onNavigate} usuario={usuario} />
       {menuAberto && <button className="activities-sidebar-overlay" type="button" onClick={() => setMenuAberto(false)} aria-label="Fechar menu" />}
       <div className="activities-workspace">
-        <Header title="Atividades do RH" onMenuClick={() => setMenuAberto(!menuAberto)} />
+        <Header title="Atividades do RH" onMenuClick={() => setMenuAberto(!menuAberto)} onLogout={onLogout} usuario={usuario} />
         <main className="activities-content">
           <section className="activities-heading">
             <div><h2>Controle de Atividades � RH</h2><p>Gerenciamento das atividades da equipe de Recursos Humanos</p></div>

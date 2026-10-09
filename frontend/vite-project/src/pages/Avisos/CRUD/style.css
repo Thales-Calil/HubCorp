@@ -54,6 +54,11 @@
   font-size: 13px;
   gap: 9px;
 }
+.aviso-form-card label small {
+  color: #918a86;
+  font-size: 11px;
+  line-height: 1.35;
+}
 .aviso-form-card em {
   color: #d74444;
   font-size: 14px;
@@ -80,6 +85,11 @@
 }
 .aviso-form-card input::placeholder, .aviso-form-card textarea::placeholder {
   color: #9f9996;
+}
+.aviso-form-card input:disabled, .aviso-form-card select:disabled, .aviso-form-card textarea:disabled {
+  background-color: #f6f4f2;
+  color: #918a86;
+  cursor: not-allowed;
 }
 .aviso-full-field {
   margin-top: 22px;
@@ -120,6 +130,16 @@
 .aviso-publish-button:hover {
   background: #28677b;
   border-color: #28677b;
+}
+.aviso-form-actions button:disabled {
+  cursor: not-allowed;
+  opacity: .62;
+}
+.aviso-form-message {
+  color: #b63434;
+  font-size: 13px;
+  line-height: 1.45;
+  margin: 16px 0 0;
 }
 .aviso-preview-column {
   display: flex;

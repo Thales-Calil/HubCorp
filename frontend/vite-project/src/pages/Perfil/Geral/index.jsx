@@ -1,14 +1,22 @@
 import './style.css';
+
 function PerfilGeral({
   nome,
-  setNome,
   email,
-  setEmail,
   telefone,
-  setTelefone,
-  cargo,
-  setCargo
+  cargo
 }) {
-  return <section className="profile-data-card"><h3>Informações pessoais</h3><div className="profile-form-grid"><label>Nome completo<input value={nome} onChange={event => setNome(event.target.value)} /></label><label>E-mail corporativo<input value={email} onChange={event => setEmail(event.target.value)} /></label><label>Telefone<input value={telefone} onChange={event => setTelefone(event.target.value)} /></label><label>Cargo<input value={cargo} onChange={event => setCargo(event.target.value)} /></label></div><div className="profile-save-area"><button type="button" onClick={() => alert('Alterações salvas com sucesso')}>Salvar alterações</button></div></section>;
+  return <section className="profile-data-card">
+      <h3>Informações pessoais</h3>
+      <p className="profile-readonly-note">Dados recebidos da sessão autenticada. A API ainda não oferece atualização segura do próprio perfil.</p>
+      <div className="profile-form-grid">
+        <label>Nome completo<input disabled value={nome} /></label>
+        <label>E-mail corporativo<input disabled value={email} /></label>
+        <label>Telefone<input disabled value={telefone} /></label>
+        <label>Cargo<input disabled value={cargo} /></label>
+      </div>
+      <div className="profile-save-area"><p>A edição permanece indisponível para evitar usar o cadastro administrativo como perfil pessoal.</p><button disabled type="button">Edição indisponível</button></div>
+    </section>;
 }
+
 export default PerfilGeral;
