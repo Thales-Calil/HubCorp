@@ -1,6 +1,15 @@
 .notifications-area {
   margin-top: 24px;
 }
+.profile-demo-note {
+  background: #fff7ef;
+  border-radius: 7px;
+  color: #8a5923;
+  font-size: 12px;
+  line-height: 1.45;
+  margin: 0 0 16px;
+  padding: 10px 12px;
+}
 .notifications-toolbar {
   align-items: center;
   display: flex;

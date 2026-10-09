@@ -10,6 +10,9 @@
   font-size: 14px;
   margin: 0 0 21px;
 }
+.preferences-card > .profile-demo-note {
+  margin-bottom: 12px;
+}
 .preferences-card > div {
   display: flex;
   flex-direction: column;
@@ -35,6 +38,12 @@
   margin-top: 17px;
   padding-top: 15px;
 }
+.preferences-card footer p {
+  color: #77706c;
+  font-size: 12px;
+  line-height: 1.45;
+  margin: 0 0 12px;
+}
 .preferences-card button {
   background: #28677b;
   border: 0;
@@ -46,6 +55,10 @@
   font-weight: 600;
   height: 42px;
   padding: 0 24px;
+}
+.preferences-card button:disabled {
+  cursor: not-allowed;
+  opacity: .62;
 }
 @media (max-width: 600px) {
   .preferences-card {

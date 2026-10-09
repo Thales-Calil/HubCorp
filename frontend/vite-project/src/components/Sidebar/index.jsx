@@ -1,11 +1,13 @@
 import { Building2, CalendarDays, ChevronRight, ClipboardList, HardHat, LayoutGrid, Megaphone, MessageSquare, UserRound, Users, UsersRound, X } from 'lucide-react';
+import { temPermissao } from '../../config/permissoes';
 import './style.css';
 const menuItems = [{
   icon: LayoutGrid,
   label: 'Dashboard'
 }, {
   icon: Megaphone,
-  label: 'Avisos e Comunicados'
+  label: 'Avisos e Comunicados',
+  permissao: 'VISUALIZAR_NOTIFICACAO'
 }, {
   icon: Users,
   label: 'Central do RH'
@@ -26,7 +28,8 @@ const menuItems = [{
   label: 'Calendário'
 }, {
   icon: UsersRound,
-  label: 'Usuários'
+  label: 'Usuários',
+  permissao: 'GERENCIAR_USUARIOS'
 }, {
   icon: UserRound,
   label: 'Meu Perfil'
@@ -35,8 +38,16 @@ function Sidebar({
   isOpen,
   onClose,
   activeItem = 'Usuários',
-  onNavigate
+  onNavigate,
+  usuario
 }) {
+  // Os módulos sem a propriedade "permissao" permanecem demonstrativos
+  // até que o backend possua um contrato de autorização específico para eles.
+  const itensVisiveis = menuItems.filter(item => !item.permissao || temPermissao(usuario?.userType, item.permissao));
+  const nome = usuario?.nome || 'Usuário';
+  const iniciais = nome.split(' ').filter(Boolean).slice(0, 2).map(parte => parte[0]).join('').toUpperCase() || 'U';
+  const perfil = usuario?.userType || 'Perfil indisponível';
+
   return <aside className={`sidebar ${isOpen ? 'sidebar-open' : ''}`}>
       <div className="sidebar-brand">
         <div className="brand-mark"><Building2 size={25} strokeWidth={1.7} /></div>
@@ -50,7 +61,7 @@ function Sidebar({
       </div>
 
       <nav className="sidebar-menu" aria-label="Menu principal">
-        {menuItems.map(({
+        {itensVisiveis.map(({
         icon: Icon,
         label
       }) => <button className={`sidebar-item ${label === activeItem ? 'sidebar-item-active' : ''}`} key={label} onClick={() => onNavigate && onNavigate(label)} type="button">
@@ -61,10 +72,10 @@ function Sidebar({
       </nav>
 
       <div className="sidebar-account">
-        <div className="account-avatar">RA</div>
+        <div className="account-avatar">{iniciais}</div>
         <div>
-          <strong>Ricardo Almeida</strong>
-          <span>Administrador</span>
+          <strong>{nome}</strong>
+          <span>{perfil}</span>
         </div>
       </div>
     </aside>;

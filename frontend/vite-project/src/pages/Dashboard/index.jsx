@@ -25,17 +25,17 @@ const indicadores = [{
   classe: 'indicator-blue'
 }];
 const avisos = [{
-  titulo: 'Manutenção programada no sistema de RH � 16/08',
+  titulo: 'Manutenção programada no sistema de RH 16/08',
   autor: 'Ricardo Almeida ⬢ 13/08/2026',
   tipo: 'Urgente',
   classe: 'badge-urgent'
 }, {
-  titulo: 'Semana de bem-estar corporativo � Agosto/2026',
+  titulo: 'Semana de bem-estar corporativo Agosto/2026',
   autor: 'Fernanda Costa ⬢ 11/08/2026',
   tipo: 'Evento',
   classe: 'badge-event'
 }, {
-  titulo: 'Atualização da política de home office � vigência imediata',
+  titulo: 'Atualização da política de home office vigência imediata',
   autor: 'Fernanda Costa ⬢ 10/08/2026',
   tipo: 'RH',
   classe: 'badge-rh'
@@ -98,14 +98,16 @@ const atalhos = [{
   classe: 'shortcut-peach'
 }];
 function Dashboard({
-  onNavigate
+  onNavigate,
+  onLogout,
+  usuario
 }) {
   const [menuAberto, setMenuAberto] = useState(false);
   return <div className="dashboard-page">
-      <Sidebar activeItem="Dashboard" isOpen={menuAberto} onClose={() => setMenuAberto(false)} onNavigate={onNavigate} />
+      <Sidebar activeItem="Dashboard" isOpen={menuAberto} onClose={() => setMenuAberto(false)} onNavigate={onNavigate} usuario={usuario} />
       {menuAberto && <button className="dashboard-sidebar-overlay" type="button" onClick={() => setMenuAberto(false)} aria-label="Fechar menu" />}
       <div className="dashboard-workspace">
-        <Header title="Dashboard" onMenuClick={() => setMenuAberto(!menuAberto)} />
+        <Header title="Dashboard" onMenuClick={() => setMenuAberto(!menuAberto)} onLogout={onLogout} usuario={usuario} />
         <main className="dashboard-content">
           <section className="indicators-grid">
             {indicadores.map(({
