@@ -1,4 +1,4 @@
-import { Building2, CalendarDays, ChevronRight, ClipboardList, HardHat, LayoutGrid, Megaphone, MessageSquare, UserRound, Users, UsersRound, X } from 'lucide-react';
+import { Building2, CalendarDays, ChevronRight, ClipboardList, FileText, HardHat, LayoutGrid, Megaphone, MessageSquare, UserRound, Users, UsersRound, X } from 'lucide-react';
 import { temPermissao } from '../../config/permissoes';
 import './style.css';
 const menuItems = [{
@@ -11,6 +11,10 @@ const menuItems = [{
 }, {
   icon: Users,
   label: 'Central do RH'
+}, {
+  icon: FileText,
+  label: 'Formulários',
+  permissao: 'VISUALIZAR_FORMULARIO'
 }, {
   icon: ClipboardList,
   label: 'Atividades do RH'
