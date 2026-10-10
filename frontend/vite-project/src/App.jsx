@@ -1,6 +1,10 @@
 import { useState } from 'react';
 import AvisosCRUD from './pages/Avisos/CRUD';
 import AvisosListagem from './pages/Avisos/Listagem';
+import FormulariosCRUD from './pages/Formularios/CRUD';
+import FormulariosListagem from './pages/Formularios/Listagem';
+import FormulariosResponder from './pages/Formularios/Responder';
+import FormulariosRespostas from './pages/Formularios/Respostas';
 import Dashboard from './pages/Dashboard';
 import CentralRH from './pages/CentralRH';
 import AtividadesRHListagem from './pages/AtividadesRH/Listagem';
@@ -18,6 +22,7 @@ import './App.css';
 const telasPorItem = {
   Dashboard: 'dashboard',
   'Avisos e Comunicados': 'avisos',
+  Formulários: 'formularios',
   'Central do RH': 'central-rh',
   'Atividades do RH': 'atividades-rh',
   'Atividades dos Gerentes': 'atividades-gerentes',
@@ -31,6 +36,10 @@ const telasPorItem = {
 const permissaoPorTela = {
   avisos: 'VISUALIZAR_NOTIFICACAO',
   'avisos-crud': 'CRIAR_NOTIFICACAO',
+  formularios: 'VISUALIZAR_FORMULARIO',
+  'formularios-crud': 'GERENCIAR_FORMULARIOS',
+  'formularios-responder': 'RESPONDER_FORMULARIO',
+  'formularios-respostas': 'GERENCIAR_FORMULARIOS',
   listagem: 'GERENCIAR_USUARIOS',
   crud: 'GERENCIAR_USUARIOS'
 };
@@ -64,6 +73,10 @@ function App() {
   const [mensagemUsuarios, setMensagemUsuarios] = useState('');
   const [notificacaoEmEdicao, setNotificacaoEmEdicao] = useState(null);
   const [mensagemAvisos, setMensagemAvisos] = useState('');
+  const [formularioEmEdicao, setFormularioEmEdicao] = useState(null);
+  const [formularioParaResponder, setFormularioParaResponder] = useState(null);
+  const [formularioParaRespostas, setFormularioParaRespostas] = useState(null);
+  const [mensagemFormularios, setMensagemFormularios] = useState('');
   const [mensagemSessao, setMensagemSessao] = useState('');
 
   function entrar({ token: novoToken, usuario: novoUsuario }) {
@@ -158,6 +171,56 @@ function App() {
     abrirTela('avisos');
   }
 
+  function novoFormulario() {
+    setFormularioEmEdicao(null);
+    setMensagemFormularios('');
+    abrirTela('formularios-crud');
+  }
+
+  function editarFormulario(id) {
+    if (!temPermissao(usuario?.userType, 'GERENCIAR_FORMULARIOS')) {
+      setTela('acesso-negado');
+      return;
+    }
+
+    setFormularioEmEdicao(id);
+    setMensagemFormularios('');
+    abrirTela('formularios-crud');
+  }
+
+  function concluirFormulario(mensagem) {
+    setFormularioEmEdicao(null);
+    setMensagemFormularios(mensagem);
+    abrirTela('formularios');
+  }
+
+  function responderFormulario(id) {
+    if (!temPermissao(usuario?.userType, 'RESPONDER_FORMULARIO')) {
+      setTela('acesso-negado');
+      return;
+    }
+
+    setFormularioParaResponder(id);
+    setMensagemFormularios('');
+    abrirTela('formularios-responder');
+  }
+
+  function concluirResposta(mensagem) {
+    setFormularioParaResponder(null);
+    setMensagemFormularios(mensagem);
+    abrirTela('formularios');
+  }
+
+  function verRespostasFormulario(id) {
+    if (!temPermissao(usuario?.userType, 'GERENCIAR_FORMULARIOS')) {
+      setTela('acesso-negado');
+      return;
+    }
+
+    setFormularioParaRespostas(id);
+    abrirTela('formularios-respostas');
+  }
+
   if (!autenticado || !token || !usuario) {
     return <Login onEntrar={entrar} mensagemSessao={mensagemSessao} />;
   }
@@ -178,6 +241,18 @@ function App() {
   }
   if (tela === 'avisos-crud') {
     return <AvisosCRUD notificacaoId={notificacaoEmEdicao} onCancelar={() => abrirTela('avisos')} onConcluido={concluirAviso} onNavigate={navegar} onLogout={sair} onSessionExpired={sessaoExpirada} token={token} usuario={usuario} />;
+  }
+  if (tela === 'formularios') {
+    return <FormulariosListagem mensagem={mensagemFormularios} onEditarFormulario={editarFormulario} onNavigate={navegar} onNovoFormulario={novoFormulario} onLogout={sair} onResponderFormulario={responderFormulario} onSessionExpired={sessaoExpirada} onVerRespostas={verRespostasFormulario} token={token} usuario={usuario} />;
+  }
+  if (tela === 'formularios-crud') {
+    return <FormulariosCRUD formularioId={formularioEmEdicao} onCancelar={() => abrirTela('formularios')} onConcluido={concluirFormulario} onNavigate={navegar} onLogout={sair} onSessionExpired={sessaoExpirada} token={token} usuario={usuario} />;
+  }
+  if (tela === 'formularios-responder') {
+    return <FormulariosResponder formularioId={formularioParaResponder} onCancelar={() => abrirTela('formularios')} onConcluido={concluirResposta} onNavigate={navegar} onLogout={sair} onSessionExpired={sessaoExpirada} token={token} usuario={usuario} />;
+  }
+  if (tela === 'formularios-respostas') {
+    return <FormulariosRespostas formularioId={formularioParaRespostas} onVoltar={() => abrirTela('formularios')} onNavigate={navegar} onLogout={sair} onSessionExpired={sessaoExpirada} token={token} usuario={usuario} />;
   }
   if (tela === 'central-rh') {
     return <CentralRH onNavigate={navegar} onLogout={sair} usuario={usuario} />;

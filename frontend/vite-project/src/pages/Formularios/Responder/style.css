@@ -1,0 +1,37 @@
+.answer-form-page { background: #faf9f8; display: flex; min-height: 100vh; }
+.answer-form-workspace { min-width: 0; width: calc(100% - 240px); }
+.answer-form-content { margin: 0 auto; max-width: 820px; padding: 33px 32px 44px; }
+.answer-form-heading { margin-bottom: 26px; }
+.answer-form-heading h2 { color: #302d2c; font-size: 22px; font-weight: 700; letter-spacing: -.35px; margin: 0; }
+.answer-form-heading p { color: #77706c; font-size: 14px; margin: 8px 0 0; }
+.answer-form-card { background: #fff; border: 1px solid #e4dedb; border-radius: 10px; box-shadow: 0 1px 2px rgba(50, 43, 38, .03); overflow: hidden; }
+.answer-form-status { background: #eff8f3; color: #357250; font-size: 12px; padding: 12px 20px; }
+.answer-question { border-bottom: 1px solid #f0edeb; display: flex; flex-direction: column; gap: 16px; padding: 23px 24px; }
+.answer-question:last-child { border-bottom: 0; }
+.answer-question > div:first-child { display: flex; flex-direction: column; gap: 6px; }
+.answer-question strong { color: #302d2c; font-size: 14px; line-height: 1.45; }
+.answer-question span { color: #918a86; font-size: 11px; }
+.answer-question textarea, .answer-question > input { background: #fff; border: 1px solid #e1dcd8; border-radius: 7px; color: #3c3735; font-family: inherit; font-size: 13px; outline-color: #28677b; padding: 12px; width: 100%; }
+.answer-question textarea { height: 112px; resize: vertical; }
+.answer-question > input { height: 42px; padding: 0 12px; }
+.answer-question textarea:disabled, .answer-question > input:disabled { background: #f6f4f2; cursor: not-allowed; }
+.answer-options { display: flex; flex-wrap: wrap; gap: 10px 18px; }
+.answer-options label, .scale-options label { align-items: center; color: #4b4745; cursor: pointer; display: flex; font-size: 13px; gap: 7px; }
+.answer-options input, .scale-options input { accent-color: #28677b; margin: 0; }
+.scale-options { display: flex; gap: 10px; }
+.scale-options label { align-items: center; justify-content: center; }
+.scale-options label span { align-items: center; border: 1px solid #e1dcd8; border-radius: 7px; color: #4b4745; display: flex; font-size: 13px; height: 35px; justify-content: center; width: 39px; }
+.scale-options input { position: absolute; opacity: 0; }
+.scale-options input:checked + span { background: #eff8fa; border-color: #28677b; color: #28677b; font-weight: 700; }
+.answer-contract-warning { color: #9a5c27; font-size: 12px; line-height: 1.45; margin: 0; }
+.answer-form-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 18px; }
+.answer-form-actions button { border-radius: 7px; cursor: pointer; font-family: inherit; font-size: 13px; font-weight: 600; height: 43px; padding: 0 21px; }
+.answer-cancel-button { background: #fff; border: 1px solid #e1dcd8; color: #5c5652; }
+.answer-submit-button { background: #28677b; border: 1px solid #28677b; color: #fff; }
+.answer-form-actions button:disabled { cursor: not-allowed; opacity: .62; }
+.answer-loading, .answer-error, .answer-inactive-message { border-radius: 7px; font-size: 13px; line-height: 1.45; margin: 0 0 18px; padding: 11px 13px; }
+.answer-loading { background: #edf4f6; color: #28677b; }
+.answer-error { background: #fff1f1; color: #b63434; }
+.answer-inactive-message { background: #fff7ef; color: #8a5923; }
+@media (max-width: 1024px) { .answer-form-workspace { width: calc(100% - 210px); } .answer-form-content { padding: 28px 24px; } }
+@media (max-width: 767px) { .answer-form-page { display: block; } .answer-form-workspace { width: 100%; } .answer-form-content { padding: 24px 16px 30px; } .answer-question { padding: 20px 16px; } .answer-form-actions { flex-direction: column; } .answer-form-actions button { width: 100%; } .answer-form-sidebar-overlay { background: rgba(0, 0, 0, .3); border: 0; inset: 0; padding: 0; position: fixed; width: 100%; z-index: 900; } }
