@@ -16,10 +16,13 @@ import Perfil from './pages/Perfil';
 import Login from './pages/Login';
 import UsuariosListagem from './pages/Usuarios/Listagem';
 import UsuariosCRUD from './pages/Usuarios/CRUD';
+import SetoresListagem from './pages/Setores/Listagem';
+import SetoresCRUD from './pages/Setores/CRUD';
 import { perfilReconhecido, temPermissao } from './config/permissoes';
 import './App.css';
 
 const telasPorItem = {
+  Setores: 'setores',
   Dashboard: 'dashboard',
   'Avisos e Comunicados': 'avisos',
   Formulários: 'formularios',
@@ -34,6 +37,8 @@ const telasPorItem = {
 };
 
 const permissaoPorTela = {
+  setores: 'GERENCIAR_SETORES',
+  'setores-crud': 'GERENCIAR_SETORES',
   avisos: 'VISUALIZAR_NOTIFICACAO',
   'avisos-crud': 'CRIAR_NOTIFICACAO',
   formularios: 'VISUALIZAR_FORMULARIO',
@@ -71,6 +76,8 @@ function App() {
   const [tela, setTela] = useState('dashboard');
   const [usuarioEmEdicao, setUsuarioEmEdicao] = useState(null);
   const [mensagemUsuarios, setMensagemUsuarios] = useState('');
+  const [setorEmEdicao, setSetorEmEdicao] = useState(null);
+  const [mensagemSetores, setMensagemSetores] = useState('');
   const [notificacaoEmEdicao, setNotificacaoEmEdicao] = useState(null);
   const [mensagemAvisos, setMensagemAvisos] = useState('');
   const [formularioEmEdicao, setFormularioEmEdicao] = useState(null);
@@ -146,6 +153,29 @@ function App() {
     setUsuarioEmEdicao(null);
     setMensagemUsuarios(mensagem);
     abrirTela('listagem');
+  }
+
+  function novoSetor() {
+    setSetorEmEdicao(null);
+    setMensagemSetores('');
+    abrirTela('setores-crud');
+  }
+
+  function editarSetor(id) {
+    if (!temPermissao(usuario?.userType, 'GERENCIAR_SETORES')) {
+      setTela('acesso-negado');
+      return;
+    }
+
+    setSetorEmEdicao(id);
+    setMensagemSetores('');
+    abrirTela('setores-crud');
+  }
+
+  function concluirSetor(mensagem) {
+    setSetorEmEdicao(null);
+    setMensagemSetores(mensagem);
+    abrirTela('setores');
   }
 
   function novoAviso() {
@@ -274,6 +304,12 @@ function App() {
   }
   if (tela === 'perfil') {
     return <Perfil onNavigate={navegar} onLogout={sair} usuario={usuario} />;
+  }
+  if (tela === 'setores') {
+    return <SetoresListagem mensagem={mensagemSetores} onEditarSetor={editarSetor} onNavigate={navegar} onNovoSetor={novoSetor} onLogout={sair} onSessionExpired={sessaoExpirada} token={token} usuario={usuario} />;
+  }
+  if (tela === 'setores-crud') {
+    return <SetoresCRUD onCancelar={() => abrirTela('setores')} onConcluido={concluirSetor} onNavigate={navegar} onLogout={sair} onSessionExpired={sessaoExpirada} setorId={setorEmEdicao} token={token} usuario={usuario} />;
   }
   if (tela === 'crud') {
     return <UsuariosCRUD onCancelar={() => abrirTela('listagem')} onConcluido={concluirUsuario} onNavigate={navegar} onLogout={sair} onSessionExpired={sessaoExpirada} token={token} usuario={usuario} usuarioId={usuarioEmEdicao} />;

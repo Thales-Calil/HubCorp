@@ -35,6 +35,10 @@ const menuItems = [{
   label: 'Usuários',
   permissao: 'GERENCIAR_USUARIOS'
 }, {
+  icon: Building2,
+  label: 'Setores',
+  permissao: 'GERENCIAR_SETORES'
+}, {
   icon: UserRound,
   label: 'Meu Perfil'
 }];
