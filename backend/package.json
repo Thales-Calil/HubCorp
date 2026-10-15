@@ -23,6 +23,8 @@
     "sequelize": "^6.37.8"
   },
   "devDependencies": {
+    "@vercel/ncc": "^0.45.0",
+    "esbuild": "^0.28.2",
     "nodemon": "^3.1.14"
   }
 }

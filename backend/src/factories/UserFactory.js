@@ -24,5 +24,5 @@ class UserFactory {
         };
     }
 }
-
+//enzo alves fabio gortz
 module.exports = UserFactory;
