@@ -1,7 +1,7 @@
 const esbuild = require('esbuild');
 
 esbuild.build({
-  entryPoints: ['src/models/index.js'], // Verifique se este caminho está 100% correto
+  entryPoints: ['src/models/index.js'],
   bundle: true,
   platform: 'node',
   format: 'cjs',
